@@ -45,21 +45,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const questionElement = document.getElementById("question");
   const optionsElement = document.getElementById("options");
-  const nextButton = document.getElementById("next-button");
   const scoreContainer = document.getElementById("score-container");
   const finalScoreElement = document.getElementById("final-score");
   const progressBar = document.getElementById("progress-bar");
   const timeLeftElement = document.getElementById("time-left");
   const restartButton = document.getElementById("restart-button");
-
-  // shuffleArray(quizData);
-
-  function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-  }
 
   function loadQuestion() {
     const currentQuestion = quizData[currentQuestionIndex];
@@ -80,12 +70,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function selectOption(selectedOption, correctAnswer) {
-    // Disable all buttons after selection
     const buttons = document.querySelectorAll(".option-button");
     buttons.forEach((button) => {
       button.disabled = true;
 
-      // Highlight correct and incorrect answers
       if (button.textContent === correctAnswer) {
         button.classList.add("correct");
       } else if (
@@ -100,7 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
       score++;
     }
 
-    // Use setTimeout to give users a moment to see the correct answer
     setTimeout(() => {
       currentQuestionIndex++;
       if (currentQuestionIndex < quizData.length) {
@@ -114,7 +101,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function endQuiz() {
     questionElement.style.display = "none";
     optionsElement.style.display = "none";
-    nextButton.style.display = "none";
     scoreContainer.style.display = "block";
     finalScoreElement.textContent = `${score}/${quizData.length}`;
     clearInterval(timerInterval);
