@@ -51,6 +51,14 @@ input:focus {
   border-color: #28a745;
 }
 
+input.error {
+  border-color: red;
+}
+
+input.error:focus {
+  border-color: red;
+}
+
 /* Button Styling */
 button {
   width: 100%;
