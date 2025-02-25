@@ -1,5 +1,3 @@
-// script.js
-
 document.addEventListener("DOMContentLoaded", () => {
   const quizData = [
     {
@@ -54,6 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const timeLeftElement = document.getElementById("time-left");
   const restartButton = document.getElementById("restart-button");
 
+  // shuffleArray(quizData);
+
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -62,31 +62,53 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function loadQuestion() {
-    shuffleArray(quizData);
     const currentQuestion = quizData[currentQuestionIndex];
     questionElement.textContent = currentQuestion.question;
     optionsElement.innerHTML = "";
+
     currentQuestion.options.forEach((option) => {
       const button = document.createElement("button");
       button.textContent = option;
+      button.classList.add("option-button");
       button.onclick = () => selectOption(option, currentQuestion.answer);
       optionsElement.appendChild(button);
     });
+
     progressBar.style.width = `${
       ((currentQuestionIndex + 1) / quizData.length) * 100
     }%`;
   }
 
   function selectOption(selectedOption, correctAnswer) {
+    // Disable all buttons after selection
+    const buttons = document.querySelectorAll(".option-button");
+    buttons.forEach((button) => {
+      button.disabled = true;
+
+      // Highlight correct and incorrect answers
+      if (button.textContent === correctAnswer) {
+        button.classList.add("correct");
+      } else if (
+        button.textContent === selectedOption &&
+        selectedOption !== correctAnswer
+      ) {
+        button.classList.add("incorrect");
+      }
+    });
+
     if (selectedOption === correctAnswer) {
       score++;
     }
-    currentQuestionIndex++;
-    if (currentQuestionIndex < quizData.length) {
-      loadQuestion();
-    } else {
-      endQuiz();
-    }
+
+    // Use setTimeout to give users a moment to see the correct answer
+    setTimeout(() => {
+      currentQuestionIndex++;
+      if (currentQuestionIndex < quizData.length) {
+        loadQuestion();
+      } else {
+        endQuiz();
+      }
+    }, 1000);
   }
 
   function endQuiz() {
@@ -94,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
     optionsElement.style.display = "none";
     nextButton.style.display = "none";
     scoreContainer.style.display = "block";
-    finalScoreElement.textContent = score;
+    finalScoreElement.textContent = `${score}/${quizData.length}`;
     clearInterval(timerInterval);
     saveHighScore();
   }
@@ -114,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
     highScores.push({ score: score, date: new Date().toISOString() });
     highScores.sort((a, b) => b.score - a.score);
-    highScores.splice(5);
+    highScores.splice(5); // Keep only top 5
     localStorage.setItem("highScores", JSON.stringify(highScores));
   }
 
@@ -128,7 +150,6 @@ document.addEventListener("DOMContentLoaded", () => {
     scoreContainer.style.display = "none";
     questionElement.style.display = "block";
     optionsElement.style.display = "block";
-    nextButton.style.display = "block";
   }
 
   loadQuestion();
