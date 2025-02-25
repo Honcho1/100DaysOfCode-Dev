@@ -1,0 +1,150 @@
+/* styles.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  max-width: 600px;
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+#quiz-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#timer {
+  margin-bottom: 10px;
+}
+
+#progress-bar-container {
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+#progress-bar {
+  height: 20px;
+  background-color: #28a745;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+#quiz-body {
+  margin-bottom: 20px;
+}
+
+#question {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+#options {
+  margin-bottom: 20px;
+}
+
+#options button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#options button:hover {
+  background-color: #218838;
+}
+
+#next-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#next-button:hover {
+  background-color: #218838;
+}
+
+#score-container {
+  text-align: center;
+}
+
+#restart-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#restart-button:hover {
+  background-color: #218838;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+    margin: 10px auto;
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  #question,
+  #options button,
+  #next-button,
+  #restart-button {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 98%;
+    margin: 5px auto;
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 18px;
+  }
+
+  #question,
+  #options button,
+  #next-button,
+  #restart-button {
+    font-size: 0.8rem;
+  }
+}
