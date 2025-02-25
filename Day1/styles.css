@@ -59,6 +59,26 @@ input.error:focus {
   border-color: red;
 }
 
+input.error + .error-message {
+  opacity: 1;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+}
+
 /* Button Styling */
 button {
   width: 100%;
