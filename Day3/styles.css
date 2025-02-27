@@ -94,3 +94,29 @@ button:hover {
 #task-list li button:hover {
   background: #a71d2a;
 }
+
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+    margin: 10px auto;
+    padding: 15px;
+  }
+
+  input,
+  button {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 98%;
+    margin: 5px auto;
+    padding: 10px;
+  }
+
+  input,
+  button {
+    font-size: 0.8rem;
+  }
+}
