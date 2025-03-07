@@ -29,6 +29,7 @@ body {
 
 .gallery-item img {
   width: 100%;
+  height: auto;
   border: 1px solid #ddd;
   border-radius: 4px;
   transition: transform 0.3s ease;
