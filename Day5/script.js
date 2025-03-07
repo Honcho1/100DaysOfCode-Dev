@@ -14,10 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   images.forEach((img) => {
-    img.onclick = () => openLightbox(img.src);
+    img.addEventListener("click", () => openLightbox(img.src));
   });
 
-  closeButton.onclick = closeLightbox;
+  closeButton.addEventListener("click", closeLightbox);
+
   window.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       closeLightbox();
